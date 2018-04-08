@@ -1,0 +1,42 @@
+css定义各个样式：
+
+h1
+{
+color: green;
+border: 1pt solid black;
+}
+
+p
+{
+color: red;
+background-color:#EFE7D6;
+border: 1pt solid black;
+}
+
+div
+{
+color: #FFFFFF;
+background-color:#000000;
+}
+
+span
+{
+color: #000000;
+background-color:#FFFFFF;
+}
+
+
+
+html内引用：
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="/html/csstest1.css" >
+</head>
+
+<body>
+<h1>我通过外部样式表进行格式化。</h1>
+<p>我也一样！</p>
+</body>
+
+</html>
