@@ -4,21 +4,12 @@ from django.contrib import admin
 # Register your models here.
 from .models import Question,Choice
 
-class ChoiceInline(admin.StackedInline):
-    #Choice 对象要在 Question 后台页面编辑。默认提供 3 个足够的选项字段
+class ChoiceInline(admin.TabularInline):
+    #关联对象以一种表格式的方式展示，显得更加紧凑
     model = Choice
-    #三个关联的选项插槽——由 extra 定义
     extra = 3
 
 class QuestionAdmin(admin.ModelAdmin):
-    #修改使得 "Publication date" 字段显示在 "Question" 字段之前
-    # fields = ['pub_date','question_text']
-
-    # fieldsets元组中的第一个元素是字段集的标题。
-    # fieldsets = [
-    #     (None,              {'fields':['question_text']}),
-    #     ('Date information',{'fields':['pub_date']}),
-    # ]
     fieldsets = [
         (None,              {'fields':['question_text']}),
         ('Date information',{'fields':['pub_date'],'classes':['collapse']}),
