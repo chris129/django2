@@ -11,7 +11,9 @@ class Question(models.Model):
         return self.question_text
     #只是为了演示增加自定义方法
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
+        #return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 class Choice(models.Model):
     question =models.ForeignKey(Question, on_delete=models.CASCADE)

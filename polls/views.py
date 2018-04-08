@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from .models import  Question,Choice
 from django.urls import reverse
 from django.views import generic
-
+from django.utils import timezone
 
 
 ###修改使用通用视图，修改view
@@ -14,7 +14,9 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        return Question.objects.order_by('-pub_date')[:5]
+        return Question.objects.filter(
+            pub_date__lte=timezone.now()
+        ).order_by('-pub_date')[:5]
 
 
 
@@ -22,6 +24,9 @@ class DetailView(generic.DetailView):
     #每个通用视图需要知道它将作用于哪个模型。 这由 model 属性提供
     model = Question
     template_name = 'polls/detail.html'
+    def get_queryset(self):
+        return Question.objects.filter(pub_date__lte=timezone.now())
+
 
 
 
