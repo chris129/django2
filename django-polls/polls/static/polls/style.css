@@ -1,0 +1,9 @@
+/*定义超链接的样式*/
+li a {
+    color: green;
+}
+
+/*定义背景的样式*/
+body {
+    background: white url("images/background.gif") no-repeat;
+}

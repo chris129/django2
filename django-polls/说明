@@ -1,0 +1,24 @@
+打包自己的应用：
+1、安装 setuptools
+2、创建一个名为 django-polls 的文件夹，用于盛放 polls
+3、将 polls 目录移入 django-polls 目录
+4、创建一个名为 django-polls/README.rst 的文件
+5、创建一个 django-polls/LICENSE 文件
+6、创建 django-polls/setup.py 用于说明如何构建和安装应用的细节
+7、为了包含额外文件，我们需要创建一个名为 MANIFEST.in 
+8、创建一个空目录 django-polls/docs 用于未来编写文档，额外添加一行至 django-polls/MANIFEST.in
+9、试着构建你自己的应用包通过 ptyhon setup.py sdist （在 django-polls``目录内）。这将创建一个名为 ``dist 的目录并构建你自己的应用包， django-polls-0.1.tar.gz
+
+导入应用：
+pip install --user django-polls/dist/django-polls-0.1.tar.gz
+然后在setting里面增加：
+INSTALLED_APPS = [
+    # 'polls.apps.PollsConfig',
+    'polls',
+并在url内增加：
+path('polls/', include('polls.urls')),
+
+卸载应用：
+pip uninstall django-polls
+
+
